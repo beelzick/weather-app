@@ -1,3 +1,21 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": ["next/core-web-vitals", "prettier"],
+  "rules": {
+    "quotes": ["error", "single", { "avoidEscape": true }],
+    "react/function-component-definition": [
+      "error",
+      { "namedComponents": "function-declaration" }
+    ],
+    "react/jsx-wrap-multilines": [
+      "error",
+      {
+        "condition": "parens-new-line",
+        "assignment": "parens-new-line",
+        "return": "parens-new-line",
+        "declaration": "parens-new-line",
+        "logical": "parens-new-line",
+        "prop": "parens-new-line"
+      }
+    ]
+  }
 }
