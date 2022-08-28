@@ -31,13 +31,13 @@
     }
   },
   "lint-staged": {
-    "*.{scss}": [
+    "*.scss": [
       "stylelint --fix"
     ],
-    "*.{js, jsx}": [
+    "*.{js,jsx}": [
       "eslint --fix"
     ],
-    "*.{scss, jsx, js}": [
+    "*.{scss,jsx,js}": [
       "prettier --write"
     ]
   }

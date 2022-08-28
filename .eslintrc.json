@@ -1,10 +1,22 @@
 {
-  "extends": ["next/core-web-vitals", "prettier"],
+  "extends": [
+    "eslint:all",
+    "prettier",
+    "next/core-web-vitals"
+  ],
   "rules": {
-    "quotes": ["error", "single", { "avoidEscape": true }],
+    "quotes": [
+      "error",
+      "single",
+      {
+        "avoidEscape": true
+      }
+    ],
     "react/function-component-definition": [
       "error",
-      { "namedComponents": "function-declaration" }
+      {
+        "namedComponents": "function-declaration"
+      }
     ],
     "react/jsx-wrap-multilines": [
       "error",
@@ -16,6 +28,7 @@
         "logical": "parens-new-line",
         "prop": "parens-new-line"
       }
-    ]
+    ],
+    "max-len": ["error", {"code": 120}]
   }
 }
