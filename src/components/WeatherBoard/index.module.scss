@@ -1,24 +1,52 @@
-.weatherBoard {
+.container {
   height: 505px;
-  width: 474px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  gap: 30px;
+  background: linear-gradient(135.77deg, rgba($color-gallery, 0.1) 0%, rgba($color-gallery, 0.4) 100%);
+  backdrop-filter: blur(50px);
+  border: 2px solid rgba($color-gallery, 0.6);
+  border-radius: 30px;
 
-  &__temperature {
+  &__currentState {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__currentStateTemperature {
     color: var(--font-color);
-    font-size: 72px;
+    font-size: 56px;
+    font-weight: 900;
   }
 
   &__conditions {
     display: flex;
     justify-content: space-between;
+    gap: 30px;
   }
 
-  &__conditionsCondition {
+  &__conditionsElement {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 20px;
+    gap: 10px;
+  }
+
+  @media (min-width: $lg) {
+    width: 474px;
+    gap: 40px;
+
+    &_currentStateTemperature {
+      font-size: 72px;
+    }
+
+    &__conditions {
+      gap: 50px;
+    }
   }
 }

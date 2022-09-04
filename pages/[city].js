@@ -31,16 +31,20 @@ export function getStaticProps() {
         city: 'Warszawa',
         humidity: 37,
         rainChance: 98,
-        state: 'burza',
+        state: 'Burza',
         temperature: '22',
         wind: 12,
         conditions: [
-          ['icon1', 'opady', '98%'],
-          ['icon2', 'wilgotność', '37%'],
-          ['icon3', 'wiatr', '12 km/h'],
+          ['/test/c1.svg', 'opady', '98%'],
+          ['/test/c2.svg', 'wilgotność', '37%'],
+          ['/test/c3.svg', 'wiatr', '12 km/h'],
         ],
       },
-      clothing: ['krótkie spodenki', 't-shirt', 'parasolka'],
+      clothing: [
+        { name: 'krótkie spodenki', path: '/test/cloth1.svg' },
+        { name: 't-shirt', path: '/test/cloth2.svg' },
+        { name: 'parasolka', path: '/test/cloth3.svg' },
+      ],
     },
   }
 }

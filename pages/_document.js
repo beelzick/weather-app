@@ -5,7 +5,7 @@ export default function Document() {
     <Html>
       <Head>
         <link rel='preconnect' href='https://fonts.googleapis.com' />
-        <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin />
+        <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='true' />
         <link
           // eslint-disable-next-line max-len
           href='https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@200;300;400;500;600;700;800;900&family=Nunito:wght@400;600;700;900&display=swap'

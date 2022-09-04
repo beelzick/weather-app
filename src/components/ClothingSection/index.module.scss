@@ -1,6 +1,7 @@
-.clothingSection {
+.container {
   display: flex;
   flex-direction: column;
+  max-width: 500px;
 
   &__headline {
     margin-bottom: 15px;
@@ -13,17 +14,28 @@
   &__weatherRecommendations {
     flex-direction: column;
     display: flex;
+    gap: 20px;
   }
 
-  &__weatherRecommendationsItem {
+  &__weatherRecommendationsElement {
     gap: 20px;
     display: flex;
     align-items: center;
   }
 
-  &__weatherRecommendationsItemText {
-    font-family: var(--paragraph-font-family);
-    color: var(--font-color);
-    font-size: 18px;
+  &__weatherRecommendationsElementImg {
+    height: 80px;
+    width: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: linear-gradient(135.76deg, rgba($color-gallery, 0.1) 14.97%, rgba($color-gallery, 0.3) 85.3%);
+    border: 1px solid rgba($color-gallery, 0.5);
+    backdrop-filter: blur(50px);
+  }
+
+  @media (min-width: $lg) {
+    padding-left: 50px;
   }
 }
