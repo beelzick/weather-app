@@ -1,0 +1,29 @@
+.clothingSection {
+  display: flex;
+  flex-direction: column;
+
+  &__headline {
+    margin-bottom: 15px;
+  }
+
+  &__subHeadline {
+    margin-bottom: 40px;
+  }
+
+  &__weatherRecommendations {
+    flex-direction: column;
+    display: flex;
+  }
+
+  &__weatherRecommendationsItem {
+    gap: 20px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__weatherRecommendationsItemText {
+    font-family: var(--paragraph-font-family);
+    color: var(--font-color);
+    font-size: 18px;
+  }
+}

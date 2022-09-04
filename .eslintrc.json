@@ -1,9 +1,5 @@
 {
-  "extends": [
-    "eslint:all",
-    "prettier",
-    "next/core-web-vitals"
-  ],
+  "extends": ["eslint:all", "prettier", "next/core-web-vitals"],
   "rules": {
     "quotes": [
       "error",
@@ -29,6 +25,9 @@
         "prop": "parens-new-line"
       }
     ],
-    "max-len": ["error", {"code": 120}]
+    "max-len": ["error", { "code": 120 }],
+    "sort-imports": 0,
+    "sort-keys": 0,
+    "func-style": 0
   }
 }

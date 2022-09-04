@@ -1,6 +1,7 @@
 {
-    "extends": [
-        "stylelint-config-css-modules",
-        "stylelint-config-standard-scss"
-    ]
+  "extends": ["stylelint-config-css-modules", "stylelint-config-standard-scss"],
+  "rules": {
+    "selector-class-pattern": null,
+    "selector-id-pattern": null
+  }
 }
