@@ -1,4 +1,6 @@
 .container {
+  @include glass;
+
   height: 505px;
   width: 100%;
   display: flex;
@@ -6,9 +8,6 @@
   align-items: center;
   justify-content: center;
   gap: 30px;
-  background: linear-gradient(135.77deg, rgba($color-gallery, 0.1) 0%, rgba($color-gallery, 0.4) 100%);
-  backdrop-filter: blur(50px);
-  border: 2px solid rgba($color-gallery, 0.6);
   border-radius: 30px;
 
   &__currentState {
@@ -41,12 +40,12 @@
     width: 474px;
     gap: 40px;
 
-    &_currentStateTemperature {
+    &__currentStateTemperature {
       font-size: 72px;
     }
 
     &__conditions {
-      gap: 50px;
+      gap: 70px;
     }
   }
 }

@@ -6,6 +6,7 @@ const nextConfig = {
     prependData: `
     @import '@/styles/colors';
     @import '@/styles/breakpoints';
+    @import '@/styles/mixins';
     `,
   },
 }

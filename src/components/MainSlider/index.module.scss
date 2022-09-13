@@ -1,0 +1,33 @@
+.container {
+  overflow: hidden;
+  margin-top: 110px;
+  margin-bottom: 40px;
+
+  &__content {
+    display: flex;
+    gap: 20px;
+  }
+
+  &__slide {
+    @include glass;
+
+    height: 240px;
+    flex: 0 0 140px;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__slideTemperature {
+    font-weight: 400;
+  }
+
+  @media (min-width: $md) {
+    &__slide {
+      flex: 0 0 180px;
+    }
+  }
+}

@@ -1,0 +1,10 @@
+@mixin glass($gradient-bottom-corner-alpha: 0.4, $border-width: 2px) {
+  background:
+    linear-gradient(
+      135.77deg,
+      rgba($color-gallery, 0.1) 0%,
+      rgba($color-gallery, $gradient-bottom-corner-alpha) 100%
+    );
+  backdrop-filter: blur(50px);
+  border: $border-width solid rgba($color-gallery, 0.6);
+}

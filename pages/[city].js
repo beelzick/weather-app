@@ -1,20 +1,22 @@
 import styles from '@/styles/pages/city.module.scss'
 import WeatherBoard from '@/components/WeatherBoard'
 import ClothingSection from '@/components/ClothingSection'
+import MainSlider from '@/components/MainSlider'
+
 import cn from 'classnames'
 
 export default function CityPage({ weather, clothing }) {
   const { city } = weather
   return (
     <>
-      <section>
-        <h1 className={cn('headline-1', styles.title)}>{`Pogoda ${city}`}</h1>
-        <div className={styles.sectionMainContainer}>
+      <section className='container'>
+        <h1 className={cn('headline-1', styles.detail__title)}>{`Pogoda ${city}`}</h1>
+        <div className={styles.detail__content}>
           <WeatherBoard weather={weather} />
           <ClothingSection clothing={clothing} />
         </div>
       </section>
-      <section></section>
+      <MainSlider />
     </>
   )
 }
