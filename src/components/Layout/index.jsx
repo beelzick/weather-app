@@ -1,11 +1,15 @@
 import styles from './index.module.scss'
 import cn from 'classnames'
 import Image from 'next/future/image'
+import SearchBar from '../SearchBar'
 
 export default function Layout({ children }) {
   return (
     <>
-      <header className={cn(styles.header, 'container')}>Weather app</header>
+      <header className={cn(styles.header, 'container')}>
+        <div>Weather app</div>
+        <SearchBar />
+      </header>
       <main>{children}</main>
       <footer className={cn(styles.footer, 'container')}>
         <div>WeatherLogo</div>

@@ -1,0 +1,72 @@
+$input-height: 40px;
+$box-border-radius: 1rem;
+$element-padding: 20px;
+
+.container {
+  width: 500px;
+  position: relative;
+
+  &__input {
+    font-family: var(--paragraph-font-family);
+    width: 100%;
+    height: $input-height;
+    border: 2px solid $color-royal-blue;
+    border-radius: 60px;
+    padding: 0 15px;
+    box-sizing: border-box;
+    font-size: 16px;
+    color: $color-black;
+  }
+
+  &__input::placeholder {
+    color: rgba($color-black, 0.5);
+  }
+
+  &__input:focus {
+    outline: 3px solid rgba($color-royal-blue, 0.6);
+  }
+
+  &__prompts {
+    position: absolute;
+    top: $input-height + 3px;
+    display: flex;
+    width: 500px;
+    background-color: $color-white;
+    border-radius: $box-border-radius;
+    box-shadow: 0 4px 14px rgba($color-black, 0.2);
+    box-sizing: border-box;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 211px;
+    padding: 15px 0;
+  }
+
+  &__promptsHeadline {
+    color: $color-light-black;
+    font-size: 1rem;
+    padding: 7px $element-padding;
+  }
+
+  &__promptsElements {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__promptsElement {
+    color: $color-black;
+    cursor: pointer;
+    padding: 7px $element-padding;
+  }
+
+  &__promptsElement:hover {
+    background-color: rgba($color-black, 0.05);
+  }
+
+  &__promptsElementLight {
+    color: $color-light-black;
+  }
+
+  &__spinner {
+    margin-left: $element-padding;
+  }
+}

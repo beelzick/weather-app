@@ -3,7 +3,7 @@ import useEmblaCarousel from 'embla-carousel-react'
 import cn from 'classnames'
 import styles from './index.module.scss'
 import Image from 'next/future/image'
-import { mockData } from '@/utils/data/mocks'
+import { mockData } from '@/utils/mocks'
 
 export default function EmblaCarousel() {
   const [emblaRef] = useEmblaCarousel({

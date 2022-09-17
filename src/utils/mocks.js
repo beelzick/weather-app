@@ -1,11 +1,11 @@
 export const mockData = [
   {
-    temperature: 22,
+    temperature: 15,
     imgPath: '/test/thunder-1.svg',
     hour: '5:00',
   },
   {
-    temperature: 22,
+    temperature: 215,
     imgPath: '/test/thunder-1.svg',
     hour: '6:00',
   },
@@ -80,3 +80,5 @@ export const mockData = [
     hour: '20:00',
   },
 ]
+
+export const recommendations = ['Warszawa', 'Kraków', 'Poznań', 'Legnica', 'Kielce', 'Suwałki']
