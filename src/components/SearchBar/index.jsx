@@ -1,56 +1,35 @@
-import { useCallback, useEffect, useState } from 'react'
-import usePlacesService from 'react-google-autocomplete/lib/usePlacesAutocompleteService'
+import { useState } from 'react'
+import { useRouter } from 'next/router'
 import { useDetectClickOutside } from 'react-detect-click-outside'
 import cn from 'classnames'
 import Result from '@/components/SearchBar/components/Result'
 import { recommendations } from '@/utils/mocks'
-import { handleRecommendationClick } from './utils'
 import styles from './index.module.scss'
-import { useRouter } from 'next/router'
-import { useDebounce } from 'use-debounce'
 import Spinner from '../Spinner'
-
-const DEBUNCE_VALUE = 500 // Ms
-const MINIMUM_SEARCH_QUERY_LENGTH = 2
+import useSearchEngine from './useSearchEngine'
 
 export default function SearchBar() {
   const [isSearchVisible, setIsSearchVisible] = useState(false)
-  const [value, setValue] = useState('')
-  const [debouncedValue] = useDebounce(value, DEBUNCE_VALUE)
+  const { isSearchingAllowed, handleInputChange, isPlacePredictionsLoading, placePredictions, debouncedValue } =
+    useSearchEngine()
+
   const router = useRouter()
-  const isSearchingAllowed = debouncedValue.length > MINIMUM_SEARCH_QUERY_LENGTH
   const headlineText = isSearchingAllowed ? 'Najlepsze sugestie' : 'Popularne terminy wyszukiwania'
-  const { placePredictions, getPlacePredictions, isPlacePredictionsLoading } = usePlacesService({
-    apiKey: 'AIzaSyArqLV9dtuFnWiG7O4XGaaV3127rjzeqEY',
-    options: {
-      types: ['(cities)'],
-      componentRestrictions: { country: 'pl' },
-    },
-  })
-
-  const memoizedGetPlacePredictions = useCallback(() => {
-    getPlacePredictions({ input: debouncedValue })
-  }, [debouncedValue])
-
-  const handleOutsideClick = () => {
-    setIsSearchVisible(false)
-  }
 
   const handleInputFocus = () => {
     setIsSearchVisible(true)
   }
 
-  useEffect(() => {
-    if (isSearchingAllowed) {
-      memoizedGetPlacePredictions()
-    }
-  }, [debouncedValue, isSearchingAllowed, memoizedGetPlacePredictions])
-
-  const handleInputChange = (event) => {
-    setValue(event.target.value)
+  const closeSearchBar = () => {
+    setIsSearchVisible(false)
   }
 
-  const ref = useDetectClickOutside({ onTriggered: handleOutsideClick })
+  const ref = useDetectClickOutside({ onTriggered: closeSearchBar })
+
+  const handleRecommendationClick = (recommendation) => () => {
+    closeSearchBar()
+    router.push(recommendation.toLowerCase())
+  }
 
   return (
     <div className={styles.container} ref={ref}>
@@ -69,7 +48,7 @@ export default function SearchBar() {
                 <span
                   key={`${element}-${index}`}
                   className={cn('paragraph', styles.container__promptsElement)}
-                  onClick={handleRecommendationClick(element, router)}
+                  onClick={handleRecommendationClick(element)}
                 >
                   {element}
                 </span>
@@ -79,7 +58,12 @@ export default function SearchBar() {
                 <Spinner svgClass={styles.container__spinner} />
               ) : (
                 placePredictions.map((item) => (
-                  <Result debouncedValue={debouncedValue} item={item} key={item.place_id} />
+                  <Result
+                    debouncedValue={debouncedValue}
+                    item={item}
+                    key={item.place_id}
+                    handleRecommendationClick={handleRecommendationClick}
+                  />
                 ))
               ))}
           </div>

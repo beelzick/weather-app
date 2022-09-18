@@ -11,7 +11,3 @@ export const getCommonPart = (string, query) => {
 
   return commonPart
 }
-
-export const handleRecommendationClick = (recommendation, router) => () => {
-  router.push(recommendation.toLowerCase())
-}
