@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import usePlacesService from 'react-google-autocomplete/lib/usePlacesAutocompleteService'
 import { useDetectClickOutside } from 'react-detect-click-outside'
 import cn from 'classnames'
@@ -28,6 +28,10 @@ export default function SearchBar() {
     },
   })
 
+  const memoizedGetPlacePredictions = useCallback(() => {
+    getPlacePredictions({ input: debouncedValue })
+  }, [debouncedValue])
+
   const handleOutsideClick = () => {
     setIsSearchVisible(false)
   }
@@ -38,9 +42,9 @@ export default function SearchBar() {
 
   useEffect(() => {
     if (isSearchingAllowed) {
-      getPlacePredictions({ input: debouncedValue })
+      memoizedGetPlacePredictions()
     }
-  }, [debouncedValue, isSearchingAllowed, getPlacePredictions])
+  }, [debouncedValue, isSearchingAllowed, memoizedGetPlacePredictions])
 
   const handleInputChange = (event) => {
     setValue(event.target.value)
@@ -63,7 +67,7 @@ export default function SearchBar() {
             {!isSearchingAllowed &&
               recommendations.map((element, index) => (
                 <span
-                  key={`${element  }-${  index}`}
+                  key={`${element}-${index}`}
                   className={cn('paragraph', styles.container__promptsElement)}
                   onClick={handleRecommendationClick(element, router)}
                 >
