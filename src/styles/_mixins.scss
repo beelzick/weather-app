@@ -5,6 +5,7 @@
       rgba($color-gallery, 0.1) 0%,
       rgba($color-gallery, $gradient-bottom-corner-alpha) 100%
     );
-  backdrop-filter: blur(50px);
+
+  // backdrop-filter: blur(50px);
   border: $border-width solid rgba($color-gallery, 0.6);
 }

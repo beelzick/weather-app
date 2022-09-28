@@ -1,4 +1,5 @@
 export const getCommonPart = (string, query) => {
+  // Find common part of two string
   let commonPart = ''
 
   for (let i = 0; i < query.length; i++) {
@@ -10,4 +11,9 @@ export const getCommonPart = (string, query) => {
   }
 
   return commonPart
+}
+
+export const formatDatetime = (date) => {
+  const formattedDate = date.split(':').slice(0, 2).join(':')
+  return formattedDate[0] === '0' ? formattedDate.slice(1) : formattedDate
 }

@@ -9,6 +9,15 @@ const nextConfig = {
     @import '@/styles/mixins';
     `,
   },
+  redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/warszawa',
+        permanent: false,
+      },
+    ]
+  },
 }
 
 module.exports = nextConfig

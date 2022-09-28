@@ -37,6 +37,8 @@
     "no-plusplus": 0,
     "no-inline-comments": 0,
     "one-var": 0,
-    "max-statements": 0
+    "max-statements": 0,
+    "no-magic-numbers": 0,
+    "no-empty-function": 0
   }
 }

@@ -6,15 +6,32 @@
 }
 
 .footer {
-  height: 60px;
+  min-height: 60px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  flex-direction: column;
+  box-sizing: border-box;
+  gap: 20px;
 
   &__content {
     display: flex;
-    justify-content: center;
     align-items: center;
     gap: 15px;
+    padding-bottom: 15px;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+  }
+
+  @media (min-width: $md) {
+    flex-direction: row;
+    align-items: center;
+
+    &__content {
+      justify-content: center;
+      padding-bottom: unset;
+    }
   }
 }

@@ -3,41 +3,46 @@ $box-border-radius: 1rem;
 $element-padding: 20px;
 
 .container {
-  width: 500px;
-  position: relative;
+  &__inputWrapper {
+    display: flex;
+    justify-content: flex-end;
+  }
 
   &__input {
     font-family: var(--paragraph-font-family);
-    width: 100%;
+    width: $input-height;
     height: $input-height;
-    border: 2px solid $color-royal-blue;
-    border-radius: 60px;
-    padding: 0 15px;
+    border-radius: 45px;
     box-sizing: border-box;
-    font-size: 16px;
-    color: $color-black;
-  }
-
-  &__input::placeholder {
-    color: rgba($color-black, 0.5);
+    outline: none;
+    border: 2px solid $color-royal-blue;
+    background: #fff url("/icons/search.svg") no-repeat;
+    background-position: right 7px bottom 7px;
+    z-index: 5;
+    padding: 0;
+    transition: width 300ms;
   }
 
   &__input:focus {
     outline: 3px solid rgba($color-royal-blue, 0.6);
   }
 
+  &__input--focused {
+    width: 100%;
+    background: #fff url("/icons/search.svg") no-repeat;
+    background-position: right 7px bottom 7px;
+    padding: 0 20px;
+  }
+
+  &__input::placeholder {
+    color: transparent;
+  }
+
   &__prompts {
-    position: absolute;
     top: $input-height + 3px;
     display: flex;
-    width: 500px;
-    background-color: $color-white;
-    border-radius: $box-border-radius;
-    box-shadow: 0 4px 14px rgba($color-black, 0.2);
-    box-sizing: border-box;
     flex-direction: column;
     gap: 8px;
-    min-height: 211px;
     padding: 15px 0;
     z-index: 10;
   }
@@ -57,17 +62,81 @@ $element-padding: 20px;
     color: $color-black;
     cursor: pointer;
     padding: 7px $element-padding;
-  }
-
-  &__promptsElement:hover {
-    background-color: rgba($color-black, 0.05);
+    max-width: 300px;
   }
 
   &__promptsElementLight {
     color: $color-light-black;
   }
 
-  &__spinner {
-    margin-left: $element-padding;
+  &--focused {
+    top: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    background-color: $color-white;
+    z-index: 50;
+    min-height: 300px;
+    padding: 15px 20px 0;
+
+    & .container__input::placeholder {
+      color: rgba($color-black, 0.5);
+    }
+  }
+
+  @media (min-width: $md) {
+    width: 500px;
+    position: relative;
+    display: block;
+    height: initial;
+
+    &__input {
+      width: 100%;
+      padding: 0 20px;
+      border-radius: 60px;
+      font-size: 16px;
+      color: $color-black;
+      position: relative;
+      background: $color-white url("/icons/search.svg") no-repeat 97.5%;
+      transition: unset;
+    }
+
+    &__input::placeholder {
+      color: rgba($color-black, 0.5);
+    }
+
+    &__prompts {
+      min-height: 211px;
+      width: 500px;
+      background-color: $color-white;
+      border-radius: $box-border-radius;
+      box-shadow: 0 4px 14px rgba($color-black, 0.2);
+      box-sizing: border-box;
+      position: absolute;
+    }
+
+    &__promptsElement {
+      max-width: unset;
+    }
+
+    &__promptsElement:hover {
+      background-color: rgba($color-black, 0.05);
+    }
+
+    &__spinner {
+      margin-left: $element-padding;
+    }
+
+    &--focused {
+      background-color: unset;
+      padding: unset;
+      min-height: unset;
+    }
+
+    &--focused .container__input {
+      position: static;
+    }
   }
 }

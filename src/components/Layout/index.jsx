@@ -4,19 +4,21 @@ import Image from 'next/future/image'
 import SearchBar from '../SearchBar'
 
 export default function Layout({ children }) {
+  const logo = <Image height={31} width={110} src='/logo.svg' alt='Weatherdrobe Logo' />
+
   return (
     <>
       <header className={cn(styles.header, 'container')}>
-        <div>Weather app</div>
+        {logo}
         <SearchBar />
       </header>
       <main>{children}</main>
       <footer className={cn(styles.footer, 'container')}>
-        <div>WeatherLogo</div>
+        {logo}
         <div className={styles.footer__content}>
           <span className='caption'>Stworzone i utrzymywane przez</span>
-          <a href='https://cratun.pl'>
-            <Image width={144} height={29.8} src='/cratun-logo.svg' alt='Cratun Logo' />
+          <a href='https://cratun.pl' className={styles.footer__logo}>
+            <Image width={97} height={20} src='/cratun-logo.svg' alt='Cratun Logo' />
           </a>
         </div>
       </footer>

@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import { useDetectClickOutside } from 'react-detect-click-outside'
 import cn from 'classnames'
 import Result from '@/components/SearchBar/components/Result'
+import { OverlayContext } from '@/utils/OverlayContext'
 import { recommendations } from '@/utils/mocks'
 import styles from './index.module.scss'
 import Spinner from '../Spinner'
@@ -10,8 +11,11 @@ import useSearchEngine from './useSearchEngine'
 
 export default function SearchBar() {
   const [isSearchVisible, setIsSearchVisible] = useState(false)
+  const { setIsOverlayVisible } = useContext(OverlayContext)
   const { isSearchingAllowed, handleInputChange, isPlacePredictionsLoading, placePredictions, debouncedValue } =
     useSearchEngine()
+
+  const inputRef = useRef()
 
   const router = useRouter()
   const headlineText = isSearchingAllowed ? 'Najlepsze sugestie' : 'Popularne terminy wyszukiwania'
@@ -22,6 +26,7 @@ export default function SearchBar() {
 
   const closeSearchBar = () => {
     setIsSearchVisible(false)
+    inputRef.current.value = ''
   }
 
   const ref = useDetectClickOutside({ onTriggered: closeSearchBar })
@@ -31,14 +36,24 @@ export default function SearchBar() {
     router.push(recommendation.toLowerCase())
   }
 
+  useEffect(() => {
+    setIsOverlayVisible(isSearchVisible)
+    if (!isSearchVisible) {
+      inputRef.current.blur()
+    }
+  }, [isSearchVisible])
+
   return (
-    <div className={styles.container} ref={ref}>
-      <input
-        className={styles.container__input}
-        placeholder='Wpisz nazwę miasta...'
-        onFocus={handleInputFocus}
-        onChange={handleInputChange}
-      />
+    <div className={cn(styles.container, { [styles['container--focused']]: isSearchVisible })} ref={ref}>
+      <div className={cn(styles.container__inputWrapper)}>
+        <input
+          className={cn(styles.container__input, { [styles['container__input--focused']]: isSearchVisible })}
+          placeholder='Wpisz nazwę miasta...'
+          onFocus={handleInputFocus}
+          onChange={handleInputChange}
+          ref={inputRef}
+        />
+      </div>
       {isSearchVisible && (
         <div className={styles.container__prompts}>
           <h2 className={cn('caption', styles.container__promptsHeadline)}>{headlineText}</h2>

@@ -1,21 +1,25 @@
 import styles from './index.module.scss'
+import Condition from './components/Conditions'
 import Image from 'next/image'
 
-export default function WeatherBoard({ weather: { state, conditions } }) {
+const getConditions = (currentConditions) => [
+    { name: 'Wilgotność', value: `${currentConditions.humidity}%`, icon: '/test/c1.svg' },
+    { name: 'Ciśnienie', value: `${currentConditions.pressure} hPa`, icon: '/test/c2.svg' },
+    { name: 'Wiatr', value: `${currentConditions.windspeed} km/h`, icon: '/test/c3.svg' },
+  ]
+
+export default function WeatherBoard({ currentConditions }) {
+  const { temp, conditions, icon } = currentConditions
   return (
     <div className={styles.container}>
-      <Image height={160} width={160} src='/test/thunder-1.svg' quality={100} />
+      <Image height={160} width={160} src={`/weather-icons/${icon}.svg`} alt={conditions} quality={100} />
       <div className={styles.container__currentState}>
-        <span className={styles.container__currentStateTemperature}>22&deg;C</span>
-        <h3 className='headline-2'>{state}</h3>
+        <span className={styles.container__currentStateTemperature}>{Math.round(temp)}&deg;C</span>
+        <h3 className='headline-2'>{conditions}</h3>
       </div>
       <div className={styles.container__conditions}>
-        {conditions.map(([iconPath, condition, value]) => (
-          <div className={styles.container__conditionsElement} key={value}>
-            <Image height={36} width={36} src={iconPath} />
-            <span className='paragraph'>{condition}</span>
-            <span className='caption'>{value}</span>
-          </div>
+        {getConditions(currentConditions).map((condition, index) => (
+          <Condition condition={condition} key={index + condition.value} />
         ))}
       </div>
     </div>
