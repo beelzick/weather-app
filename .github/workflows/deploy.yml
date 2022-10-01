@@ -29,7 +29,7 @@ jobs:
         script: |
           eval `ssh-agent -s`
           ssh-add /home/ubuntu/.ssh/cratun-github
-          cd /var/www/weatherdrobe.pl/public_html/we && rm -rf * .[^.]*
+          cd /var/www/weatherdrobe.pl/public_html/weatherdrobe-build && rm -rf * .[^.]*
           git clone git@github.com:beelzick/weather-app.git .
           npm install --omit=dev --force
           npm run build
