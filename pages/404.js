@@ -1,6 +1,7 @@
 import cn from 'classnames'
 import styles from '@/styles/pages/404.module.scss'
 import Image from 'next/future/image'
+import { ICONS_PATH } from '@/utils/enums'
 
 const SECOND_IMAGE_DIMENSIONS = 350
 
@@ -8,7 +9,13 @@ export default function NotFound() {
   return (
     <section className={cn('container', styles.container)}>
       <div className={styles.container__left}>
-        <Image width={532} height={221} src='/icons/404.svg' className={styles.container__404title} alt='404 title' />
+        <Image
+          width={532}
+          height={221}
+          src={`${ICONS_PATH  }404.svg`}
+          className={styles.container__404title}
+          alt='404 title'
+        />
         <h2 className={cn(styles.container__subTitle, 'headline-2')}>
           Niestey nie znaleźliśmy adresu, którego szukasz
         </h2>
@@ -17,7 +24,7 @@ export default function NotFound() {
           skontaktuj się z nami.
         </p>
         <div className={styles.container__help}>
-          <Image width={25} height={25} src='/icons/email.svg' alt='email icon' />
+          <Image width={25} height={25} src={`${ICONS_PATH  }email.svg`} alt='email icon' />
           <span>help@weatherdrobe.co</span>
         </div>
       </div>
@@ -25,7 +32,7 @@ export default function NotFound() {
         <Image
           width={SECOND_IMAGE_DIMENSIONS}
           height={SECOND_IMAGE_DIMENSIONS}
-          src='/icons/404-picture.png'
+          src={`${ICONS_PATH  }404-picture.png`}
           alt='404 picture sad magnifying glass'
           className={styles.container__picture}
         />

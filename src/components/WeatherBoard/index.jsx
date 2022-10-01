@@ -3,19 +3,19 @@ import styles from './index.module.scss'
 import Condition from './components/Conditions'
 import { ICONS_PATH } from '@/utils/enums'
 
-const HUMIDITY_PATH = `${ICONS_PATH  }humidity/`
+const HUMIDITY_PATH = `${ICONS_PATH}humidity/`
 const HUMIDITY_ICON_MAP = [
-  [60, `${HUMIDITY_PATH  }high.svg`],
-  [40, `${HUMIDITY_PATH  }mid.svg`],
-  [0, `${HUMIDITY_PATH  }low.svg`],
+  [60, `${HUMIDITY_PATH}high.svg`],
+  [40, `${HUMIDITY_PATH}mid.svg`],
+  [0, `${HUMIDITY_PATH}low.svg`],
 ]
 
 const getHumidityIcon = (humidity) => HUMIDITY_ICON_MAP.find(([k]) => humidity > k)[1]
 
 const getConditions = ({ humidity, pressure, windspeed }) => [
   { name: 'Wilgotność', value: `${humidity}%`, icon: getHumidityIcon(humidity) },
-  { name: 'Ciśnienie', value: `${pressure} hPa`, icon: `${ICONS_PATH  }pressure.svg` },
-  { name: 'Wiatr', value: `${windspeed} km/h`, icon: `${ICONS_PATH  }wind-speed.svg` },
+  { name: 'Ciśnienie', value: `${pressure} hPa`, icon: `${ICONS_PATH}pressure.svg` },
+  { name: 'Wiatr', value: `${windspeed} km/h`, icon: `${ICONS_PATH}wind-speed.svg` },
 ]
 
 export default function WeatherBoard({ currentConditions }) {

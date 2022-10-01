@@ -4,6 +4,7 @@ import ClothingSection from '@/components/ClothingSection'
 import MainSlider from '@/components/MainSlider'
 import cn from 'classnames'
 import axios from 'axios'
+import getClothing from '@/utils/getClothing'
 
 export default function CityPage({ city, clothing, currentConditions, hours }) {
   const title = `Pogoda ${city[0].toUpperCase() + city.slice(1)}`
@@ -24,15 +25,16 @@ export default function CityPage({ city, clothing, currentConditions, hours }) {
 
 export async function getServerSideProps({ query: { city } }) {
   try {
-    const uri =
-      `${encodeURI(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}/today`) 
-      }?include=current%2Chours`
+    const uri = `${encodeURI(
+      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}/today`
+    )}?include=current%2Chours`
     const { data } = await axios.get(uri, {
       params: {
         unitGroup: 'metric',
         key: process.env.WEATHER_API_KEY,
         contentType: 'json',
         iconSet: 'icons2',
+        lang: 'pl',
       },
     })
 
@@ -46,16 +48,11 @@ export async function getServerSideProps({ query: { city } }) {
         city,
         currentConditions,
         hours,
-        clothing: [
-          { name: 'krótkie spodenki', path: '/test/cloth1.svg' },
-          { name: 't-shirt', path: '/test/cloth2.svg' },
-          { name: 'parasolka', path: '/test/cloth3.svg' },
-        ],
+        clothing: getClothing(currentConditions),
       },
     }
   } catch (e) {
     const isBadRequest = e.code === 'ERR_BAD_REQUEST'
-
     return {
       redirect: {
         destination: isBadRequest ? '/404' : '/500',

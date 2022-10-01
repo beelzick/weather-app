@@ -3,9 +3,8 @@ import useEmblaCarousel from 'embla-carousel-react'
 import cn from 'classnames'
 import styles from './index.module.scss'
 import Image from 'next/future/image'
+import roundMinutes from '@/utils/roundMinutes'
 import { formatDatetime } from '@/utils/helpers'
-
-const roundMinutes = (date) => date.getMinutes() >= 30 ? date.getHours() + 1 : date.getHours()
 
 export default function MainSlider({ hours }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({
