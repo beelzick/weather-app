@@ -28,7 +28,7 @@ jobs:
         port: ${{ secrets.WEATHERDROBE_OVH_HOST_PORT }}
         script: |
           eval `ssh-agent -s`
-          ssh-add /home/ubuntu/.ssh/weatherdrobe-github
+          ssh-add /home/ubuntu/.ssh/cratun-github
           cd /var/www/weatherdrobe.pl/public_html/we && rm -rf * .[^.]*
           git clone git@github.com:beelzick/weather-app.git .
           npm install --omit=dev --force
