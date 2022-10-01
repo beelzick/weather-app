@@ -1,0 +1,57 @@
+$container-padding: 30px;
+
+.container {
+  min-height: calc(100vh - var(--headline-height) - var(--footer-height) - $container-padding - $container-padding);
+  display: flex;
+  padding-top: $container-padding;
+  padding-bottom: $container-padding;
+  align-items: center;
+
+  &__left {
+    flex: 1;
+  }
+
+  &__404title {
+    margin-bottom: 50px;
+    max-width: 100%;
+  }
+
+  &__subTitle {
+    margin-bottom: 15px;
+  }
+
+  &__paragraph {
+    margin-bottom: 10px;
+  }
+
+  &__help {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__right {
+    flex: 1;
+    display: none;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  @media (min-width: $lg) {
+    &__right {
+      display: flex;
+    }
+
+    &__picture {
+      max-width: 300px;
+      max-height: 300px;
+    }
+  }
+
+  @media (min-width: $xl) {
+    &__picture {
+      max-width: unset;
+      max-height: unset;
+    }
+  }
+}

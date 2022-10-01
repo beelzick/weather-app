@@ -2,9 +2,14 @@ import styles from './index.module.scss'
 import cn from 'classnames'
 import Image from 'next/future/image'
 import SearchBar from '../SearchBar'
+import Link from 'next/link'
 
 export default function Layout({ children }) {
-  const logo = <Image height={31} width={110} src='/logo.svg' alt='Weatherdrobe Logo' />
+  const logo = (
+    <Link href='/'>
+      <Image className={styles.logo} height={31} width={110} src='/logo.svg' alt='Weatherdrobe Logo' />
+    </Link>
+  )
 
   return (
     <>

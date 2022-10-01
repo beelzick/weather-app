@@ -81,4 +81,4 @@ export const mockData = [
   },
 ]
 
-export const recommendations = ['Warszawa', 'Kraków', 'Poznań', 'Legnica', 'Kielce', 'Suwałki']
+export const recommendations = ['Warszawa', 'Kraków', 'Łódź', 'Wrocław', 'Poznań', 'Gdańsk']

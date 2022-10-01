@@ -5,14 +5,21 @@
 
   &__content {
     display: flex;
-    gap: 20px;
+    height: 246px;
+    align-items: center;
+  }
+
+  &__slideContainer {
+    flex: 0 0 180px;
+    display: flex;
+    justify-content: center;
   }
 
   &__slide {
     @include glass;
 
     height: 240px;
-    flex: 0 0 140px;
+    width: 160px;
     border-radius: 40px;
     display: flex;
     flex-direction: column;
@@ -21,13 +28,21 @@
     gap: 20px;
   }
 
+  &__slide--current {
+    background: linear-gradient(152.5deg, $color-lavender 5.32%, $color-royal-blue 94.53%);
+  }
+
   &__slideTemperature {
     font-weight: 400;
   }
 
   @media (min-width: $md) {
+    &__slideContainer {
+      flex: 0 0 200px;
+    }
+
     &__slide {
-      flex: 0 0 180px;
+      width: 180px;
     }
   }
 }

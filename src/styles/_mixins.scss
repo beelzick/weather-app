@@ -6,6 +6,6 @@
       rgba($color-gallery, $gradient-bottom-corner-alpha) 100%
     );
 
-  // backdrop-filter: blur(50px);
-  border: $border-width solid rgba($color-gallery, 0.6);
+  // box-shadow instead of border becasue of empty spaces near edges
+  box-shadow: 0 0 0 $border-width rgba($color-gallery, 0.6);
 }

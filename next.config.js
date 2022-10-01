@@ -7,6 +7,7 @@ const nextConfig = {
     @import '@/styles/colors';
     @import '@/styles/breakpoints';
     @import '@/styles/mixins';
+    @import '@/styles/font-weight';
     `,
   },
   redirects() {

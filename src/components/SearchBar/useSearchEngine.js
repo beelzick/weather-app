@@ -4,6 +4,7 @@ import { useDebounce } from 'use-debounce'
 
 const DEBUNCE_VALUE = 500 // Ms
 const MINIMUM_SEARCH_QUERY_LENGTH = 2
+
 export default function useSearchEngine() {
   const [value, setValue] = useState('')
   const [debouncedValue] = useDebounce(value, DEBUNCE_VALUE)

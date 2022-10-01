@@ -1,16 +1,19 @@
 .header {
-  height: 70px;
+  height: var(--headline-height);
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
+.logo {
+  cursor: pointer;
+}
+
 .footer {
-  min-height: 60px;
+  min-height: var(--footer-height);
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  box-sizing: border-box;
   gap: 20px;
 
   &__content {
