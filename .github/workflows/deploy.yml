@@ -1,0 +1,39 @@
+
+# This is a basic workflow to help you get started with Actions
+
+name: Node.js CD
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ main ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    - name: Deploy using ssh
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.WEATHERDROBE_OVH_HOST }}
+        username: ${{ secrets.WEATHERDROBE_USERNAME }}
+        key: ${{ secrets.WEATHERDROBE_OVH_SECRET }}
+        passphrase: ${{ secrets.WEATHERDROBE_OVH_PASSPHRASE }}
+        port: ${{ secrets.WEATHERDROBE_OVH_HOST_PORT }}
+        script: |
+          eval `ssh-agent -s`
+          ssh-add /home/ubuntu/.ssh/weatherdrobe-github
+          cd /var/www/weatherdrobe.pl/public_html/we && rm -rf * .[^.]*
+          git clone git@github.com:beelzick/weather-app.git .
+          npm install --omit=dev --force
+          npm run build
+          rm -rf .eslintrc.json .husky lib pages .prettierrc.json README.md src styles .vscode
+          cd /var/www/weatherdrobe.pl/public_html && rm -rf .babelrc .git .github .gitignore .next next.config.js next-i18next.config.js node_modules package.json package-lock.json public
+          mv  -v /var/www/weatherdrobe.pl/public_html/weatherdrobe-build/{*,.[^.]*,..?*} /var/www/weatherdrobe.pl/public_html
+          pm2 restart 1
