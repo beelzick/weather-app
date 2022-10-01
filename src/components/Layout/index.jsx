@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 export default function Layout({ children }) {
   const logo = (
-    <Link href='/'>
+    <Link href='/warszawa'>
       <Image className={styles.logo} height={31} width={110} src='/logo.svg' alt='Weatherdrobe Logo' />
     </Link>
   )

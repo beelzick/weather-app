@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import cn from 'classnames'
 import styles from './index.module.scss'
 import Condition from './components/Conditions'
 import { ICONS_PATH } from '@/utils/enums'
@@ -25,7 +26,7 @@ export default function WeatherBoard({ currentConditions }) {
       <Image height={160} width={160} src={`/weather-icons/${icon}.svg`} alt={conditions} quality={100} />
       <div className={styles.container__currentState}>
         <span className={styles.container__currentStateTemperature}>{Math.round(temp)}&deg;C</span>
-        <h3 className='headline-2'>{conditions}</h3>
+        <h3 className={cn('headline-2', styles.container__currentStateConditions)}>{conditions}</h3>
       </div>
       <div className={styles.container__conditions}>
         {getConditions(currentConditions).map((condition, index) => (

@@ -1,16 +1,27 @@
+import Head from 'next/head'
+import axios from 'axios'
+import cn from 'classnames'
+import getClothing from '@/utils/getClothing'
+import { capitalize } from '@/utils/helpers'
 import styles from '@/styles/pages/city.module.scss'
 import WeatherBoard from '@/components/WeatherBoard'
 import ClothingSection from '@/components/ClothingSection'
 import MainSlider from '@/components/MainSlider'
-import cn from 'classnames'
-import axios from 'axios'
-import getClothing from '@/utils/getClothing'
 
 export default function CityPage({ city, clothing, currentConditions, hours }) {
-  const title = `Pogoda ${city[0].toUpperCase() + city.slice(1)}`
+  const capitalizedCity = capitalize(city)
+  const title = `Pogoda ${capitalizedCity}`
 
   return (
     <>
+      <Head>
+        <title>{`${title}, sprawdź prognozę na dzisiaj | Weatherdrobe`}</title>
+        <meta
+          name='description'
+          // eslint-disable-next-line max-len
+          content={`Sprawdź aktualną pogodę w mieście ${capitalizedCity}. Prognoza pogody na dzisiejszy dzień. Zobacz w co się dzisiaj ubrać. Prognoza dla każdej godziny.`}
+        />
+      </Head>
       <section className='container'>
         <h1 className={cn('headline-1', styles.detail__title)}>{title}</h1>
         <div className={styles.detail__content}>

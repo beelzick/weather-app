@@ -1,13 +1,15 @@
 .container {
   @include glass;
 
-  height: 505px;
+  height: 520px;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 30px;
+  padding: 20px;
+  box-sizing: border-box;
   border-radius: 30px;
 
   &__currentState {
@@ -21,6 +23,10 @@
     color: var(--font-color);
     font-size: 56px;
     font-weight: 900;
+  }
+
+  &__currentStateConditions {
+    text-align: center;
   }
 
   &__conditions {

@@ -17,3 +17,5 @@ export const formatDatetime = (date) => {
   const formattedDate = date.split(':').slice(0, 2).join(':')
   return formattedDate[0] === '0' ? formattedDate.slice(1) : formattedDate
 }
+
+export const capitalize = (string) => string[0].toUpperCase() + string.slice(1)

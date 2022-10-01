@@ -1,4 +1,4 @@
-const CLOTHES_PATH = '/clothes/'
+const CLOTHES_PATH = '/clothes-icons/'
 const createClothes = (...args) => args.map(([path, name]) => ({ path: `${CLOTHES_PATH}${path}.svg`, name }))
 
 const CLOTH_ICON_MAP = {
