@@ -7,13 +7,13 @@
   }
 
   &__title {
-    margin-top: 40px;
-    margin-bottom: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 
   @media (min-width: $lg) {
     &__title {
-      margin-bottom: 80px;
+      margin-bottom: 40px;
     }
 
     &__content {

@@ -19,13 +19,10 @@ export default function Layout({ children }) {
       </header>
       <main>{children}</main>
       <footer className={cn(styles.footer, 'container')}>
-        {logo}
-        <div className={styles.footer__content}>
-          <span className='caption'>Stworzone i utrzymywane przez</span>
-          <a href='https://cratun.pl' className={styles.footer__logo}>
-            <Image width={97} height={20} src='/cratun-logo.svg' alt='Cratun Logo' />
-          </a>
-        </div>
+        <a href='https://cratun.pl' className={styles.footer__content}>
+          <span className={cn(styles.footer__caption, 'caption')}>Stworzone i utrzymywane przez</span>
+          <Image width={97} height={20} src='/cratun-logo.svg' alt='Cratun Logo' />
+        </a>
       </footer>
     </>
   )

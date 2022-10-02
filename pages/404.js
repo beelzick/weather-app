@@ -12,7 +12,7 @@ export default function NotFound() {
         <Image
           width={532}
           height={221}
-          src={`${ICONS_PATH  }404.svg`}
+          src={`${ICONS_PATH}404.svg`}
           className={styles.container__404title}
           alt='404 title'
         />
@@ -24,15 +24,15 @@ export default function NotFound() {
           skontaktuj się z nami.
         </p>
         <div className={styles.container__help}>
-          <Image width={25} height={25} src={`${ICONS_PATH  }email.svg`} alt='email icon' />
-          <span>help@weatherdrobe.co</span>
+          <Image width={25} height={25} src={`${ICONS_PATH}email.svg`} alt='email icon' />
+          <span>biuro@cratun.pl</span>
         </div>
       </div>
       <div className={styles.container__right}>
         <Image
           width={SECOND_IMAGE_DIMENSIONS}
           height={SECOND_IMAGE_DIMENSIONS}
-          src={`${ICONS_PATH  }404-picture.png`}
+          src={`${ICONS_PATH}404-picture.png`}
           alt='404 picture sad magnifying glass'
           className={styles.container__picture}
         />

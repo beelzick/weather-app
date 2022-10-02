@@ -12,15 +12,12 @@
 .footer {
   min-height: var(--footer-height);
   display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  gap: 20px;
 
   &__content {
     display: flex;
     align-items: center;
     gap: 15px;
-    padding-bottom: 15px;
+    text-decoration: none;
   }
 
   &__logo {
@@ -28,13 +25,7 @@
     align-items: center;
   }
 
-  @media (min-width: $md) {
-    flex-direction: row;
-    align-items: center;
-
-    &__content {
-      justify-content: center;
-      padding-bottom: unset;
-    }
+  &__caption {
+    color: $color-white;
   }
 }

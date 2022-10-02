@@ -42,6 +42,10 @@
     gap: 10px;
   }
 
+  &__conditionsElementDescription {
+    font-weight: $font-weight-semibold;
+  }
+
   @media (min-width: $lg) {
     width: 474px;
     gap: 40px;

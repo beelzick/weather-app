@@ -6,7 +6,7 @@ export default function ClothingSection({ clothing }) {
   return (
     <div className={styles.container}>
       <h2 className={cn('headline-2', styles.container__headline)}>Jak się ubrać na dzisiejszą pogodę?</h2>
-      <p className={cn('headline-3', styles.container__subHeadline)}>Biorąc pod uwagę warunki pogodowe wybierz</p>
+      <p className={cn('paragraph', styles.container__subHeadline)}>Biorąc pod uwagę warunki pogodowe wybierz</p>
       <div className={styles.container__weatherRecommendations}>
         {clothing.map(({ name, path }) => (
           <div key={name} className={styles.container__weatherRecommendationsElement}>
