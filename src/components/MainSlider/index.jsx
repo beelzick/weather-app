@@ -13,7 +13,8 @@ export default function MainSlider({ hours }) {
     containScroll: 'keepSnaps',
   })
 
-  const currentIndex = hours.findIndex(({ datetime }) => datetime.slice(0, 2) === roundMinutes(new Date()))
+  const newDate = new Date()
+  const currentIndex = hours.findIndex(({ datetime }) => datetime.slice(0, 2) === roundMinutes(newDate))
 
   useEffect(() => {
     emblaApi?.scrollTo(currentIndex - 1)
