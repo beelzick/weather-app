@@ -8,8 +8,10 @@ export default function Layout({ children }) {
   return (
     <>
       <header className={cn(styles.header, 'container')}>
-        <Link href='/warszawa'>
-          <Image className={styles.logo} height={31} width={110} src='/logo.svg' alt='Weatherdrobe Logo' />
+        <Link href='/warszawa' passHref>
+          <a>
+            <Image className={styles.logo} height={31} width={110} src='/logo.svg' alt='Weatherdrobe Logo' />
+          </a>
         </Link>
         <SearchBar />
       </header>
