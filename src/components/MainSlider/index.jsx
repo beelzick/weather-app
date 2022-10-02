@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import cn from 'classnames'
 import styles from './index.module.scss'
@@ -7,14 +7,17 @@ import roundMinutes from '@/utils/roundMinutes'
 import { formatDatetime } from '@/utils/helpers'
 
 export default function MainSlider({ hours }) {
+  const [currentIndex, setCurrentIndex] = useState(0)
   const [emblaRef, emblaApi] = useEmblaCarousel({
     dragFree: true,
     align: 'start',
     containScroll: 'keepSnaps',
   })
 
-  const newDate = new Date()
-  const currentIndex = hours.findIndex(({ datetime }) => datetime.slice(0, 2) === roundMinutes(newDate))
+  useEffect(() => {
+    const newCurrentIndex = hours.findIndex(({ datetime }) => datetime.slice(0, 2) === roundMinutes(new Date()))
+    setCurrentIndex(newCurrentIndex)
+  }, [])
 
   useEffect(() => {
     emblaApi?.scrollTo(currentIndex - 1)
