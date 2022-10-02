@@ -1,12 +1,12 @@
 import Head from 'next/head'
 import axios from 'axios'
 import cn from 'classnames'
-import getClothing from '../src/utils/getClothing'
-import { capitalize } from '../src/utils/helpers'
-import styles from '../src/styles/pages/city.module.scss'
-import WeatherBoard from '../src/components/WeatherBoard'
-import ClothingSection from '../src/components/ClothingSection'
-import MainSlider from '../src/components/MainSlider'
+import getClothing from '@/utils/getClothing'
+import { capitalize } from '@/utils/helpers'
+import styles from '@/styles/pages/city.module.scss'
+import WeatherBoard from '@/components/WeatherBoard'
+import ClothingSection from '@/components/ClothingSection'
+import MainSlider from '@/components/MainSlider'
 
 export default function CityPage({ city, clothing, currentConditions, hours }) {
   const capitalizedCity = capitalize(city)
